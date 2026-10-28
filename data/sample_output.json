@@ -1,0 +1,100 @@
+{
+  "change_summary": "TR12345 changes promotional discount calculation and condition priority in O2C, with downstream exposure to tax, billing and FI posting.",
+  "impacted_processes": [
+    "Pricing",
+    "Tax",
+    "Billing",
+    "Finance",
+    "Reconciliation",
+    "Returns"
+  ],
+  "overall_risk": "High",
+  "selected_tests": [
+    {
+      "test_id": "TC002",
+      "reason": "Directly validates promotional discount logic.",
+      "risk_score": 88,
+      "execution_route": "TOSCA"
+    },
+    {
+      "test_id": "TC004",
+      "reason": "Protects stacked-promotion priority and exclusion rules.",
+      "risk_score": 82,
+      "execution_route": "MANUAL"
+    },
+    {
+      "test_id": "TC005",
+      "reason": "Validates downstream tax calculation after discount.",
+      "risk_score": 78,
+      "execution_route": "TOSCA"
+    },
+    {
+      "test_id": "TC011",
+      "reason": "Critical downstream billing coverage.",
+      "risk_score": 82,
+      "execution_route": "TOSCA"
+    },
+    {
+      "test_id": "TC012",
+      "reason": "Direct invoice-total validation after promotional discount.",
+      "risk_score": 96,
+      "execution_route": "TOSCA"
+    },
+    {
+      "test_id": "TC014",
+      "reason": "Validates downstream FI document creation.",
+      "risk_score": 84,
+      "execution_route": "TOSCA"
+    },
+    {
+      "test_id": "TC015",
+      "reason": "Validates AR, revenue, tax and discount postings.",
+      "risk_score": 92,
+      "execution_route": "TOSCA"
+    },
+    {
+      "test_id": "TC016",
+      "reason": "Protects financial balancing control.",
+      "risk_score": 70,
+      "execution_route": "TOSCA"
+    },
+    {
+      "test_id": "TC018",
+      "reason": "End-to-end reconciliation across order, delivery, invoice and FI.",
+      "risk_score": 78,
+      "execution_route": "HYBRID"
+    },
+    {
+      "test_id": "TC020",
+      "reason": "Validates refund behavior for promoted orders.",
+      "risk_score": 72,
+      "execution_route": "MANUAL"
+    },
+    {
+      "test_id": "TC024",
+      "reason": "Critical downstream billing integration event.",
+      "risk_score": 78,
+      "execution_route": "TOSCA"
+    }
+  ],
+  "deferred_tests": [
+    {
+      "test_id": "TC006",
+      "reason": "ATP is not materially changed by pricing logic."
+    },
+    {
+      "test_id": "TC019",
+      "reason": "Standard return path adds limited incremental coverage for this change."
+    }
+  ],
+  "coverage_gaps": [
+    {
+      "gap": "Promotion effective-date boundary",
+      "recommended_scenario": "Validate an order immediately before and after the promotion effective-date boundary and confirm price, tax, invoice and FI values.",
+      "suggested_route": "HYBRID"
+    }
+  ],
+  "human_review_required": true,
+  "confidence": 0.91,
+  "executive_summary": "The change is High risk because promotional pricing propagates into tax, billing and financial posting. Execute a targeted cross-process pack rather than the complete O2C suite, and require human review for financial-control evidence and the new boundary scenario."
+}

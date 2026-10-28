@@ -1,0 +1,26 @@
+test_id,process,description,criticality,execution_type,tags,historical_defects,financial_impact
+TC001,Sales Order,Create standard sales order,High,AUTOMATED,sales-order;order-entry;customer;material,3,No
+TC002,Pricing,Validate promotional discount pricing condition,Critical,AUTOMATED,pricing;promotion;discount;condition-record,7,Yes
+TC003,Pricing,Validate customer-specific discount,High,AUTOMATED,pricing;customer-discount;condition-record,5,Yes
+TC004,Pricing,Validate stacked promotion priority and exclusion rules,Critical,MANUAL,pricing;promotion;stacked-discount;priority,4,Yes
+TC005,Tax,Validate tax calculation after promotional discount,Critical,AUTOMATED,tax;pricing;promotion;invoice,6,Yes
+TC006,ATP,Validate ATP when inventory is available,Medium,AUTOMATED,inventory;atp;availability,2,No
+TC007,ATP,Validate partial inventory allocation,High,AUTOMATED,inventory;atp;partial-fulfillment,4,No
+TC008,Delivery,Create delivery from sales order,High,AUTOMATED,delivery;shipping;sales-order,3,No
+TC009,Fulfillment,Validate order handoff to 3PL,High,AUTOMATED,3pl;fulfillment;integration;delivery,5,No
+TC010,PGI,Validate PGI and inventory reduction,High,AUTOMATED,pgi;inventory;delivery,4,Yes
+TC011,Billing,Create invoice for fully delivered order,Critical,AUTOMATED,billing;invoice;pricing;delivery,8,Yes
+TC012,Billing,Validate invoice totals after promotional discount,Critical,AUTOMATED,billing;invoice;pricing;promotion;discount,9,Yes
+TC013,Billing,Validate partial billing scenario,High,MANUAL,billing;partial-shipment;invoice,3,Yes
+TC014,Finance,Validate FI document from invoice,Critical,AUTOMATED,finance;fi;accounting;billing;invoice,8,Yes
+TC015,Finance,"Validate AR, revenue, tax and discount postings",Critical,AUTOMATED,finance;fi;ar;revenue;tax;discount,10,Yes
+TC016,Finance,Validate debit equals credit,Critical,AUTOMATED,finance;fi;reconciliation;control,2,Yes
+TC017,Payment,Validate incoming payment clearing,High,AUTOMATED,payment;clearing;ar,4,Yes
+TC018,Reconciliation,Reconcile sales order to delivery to invoice to FI,Critical,HYBRID,reconciliation;sales-order;delivery;invoice;fi,6,Yes
+TC019,Returns,Process standard return,Medium,AUTOMATED,returns;refund,2,Yes
+TC020,Returns,Validate refund after promotion,High,MANUAL,returns;refund;promotion;pricing,5,Yes
+TC021,Master Data,Blocked customer prevents order,Medium,AUTOMATED,customer;master-data;block,1,No
+TC022,Master Data,Invalid material is rejected,Medium,AUTOMATED,material;master-data;validation,1,No
+TC023,Interface,Validate order API response schema,High,AUTOMATED,api;order-entry;integration;contract,4,No
+TC024,Interface,Validate billing event published downstream,Critical,AUTOMATED,event;integration;billing;downstream,6,Yes
+TC025,Reporting,Validate O2C revenue reporting totals,High,MANUAL,reporting;revenue;finance;reconciliation,3,Yes

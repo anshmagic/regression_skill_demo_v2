@@ -1,0 +1,6 @@
+{
+  "change_id": "TR12345",
+  "business_process": "Order-to-Cash",
+  "changed_component": "SAP pricing condition logic",
+  "description": "Modify promotional discount calculation and condition priority for O2C sales orders. The change can alter net order value and flows downstream into tax, billing and financial posting."
+}
